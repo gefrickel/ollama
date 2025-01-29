@@ -15,7 +15,7 @@ else
     LOAD_OR_PUSH="--push"
 fi
 
-docker buildx build \
+podman buildx build \
     ${LOAD_OR_PUSH} \
     --platform=${PLATFORM} \
     ${OLLAMA_COMMON_BUILD_ARGS} \
@@ -24,7 +24,7 @@ docker buildx build \
     .
 
 if echo $PLATFORM | grep "amd64" > /dev/null; then
-    docker buildx build \
+    podman buildx build \
         ${LOAD_OR_PUSH} \
         --platform=linux/amd64 \
         ${OLLAMA_COMMON_BUILD_ARGS} \
