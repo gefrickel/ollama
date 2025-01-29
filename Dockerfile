@@ -19,9 +19,11 @@ ARG GOLANG_VERSION
 ARG CUDA_VERSION_11
 ARG CUDA_VERSION_12
 COPY ./scripts/rh_linux_deps.sh /
+COPY ./scripts/build_docker.sh /
 ENV PATH /opt/rh/devtoolset-10/root/usr/bin:/usr/local/cuda/bin:$PATH
 ENV LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/cuda/lib64
-RUN GOLANG_VERSION=${GOLANG_VERSION} sh /rh_linux_deps.sh
+# RUN GOLANG_VERSION=${GOLANG_VERSION} sh /rh_linux_deps.sh
+RUN GOLANG_VERSION=${GOLANG_VERSION} sh /build_docker.sh
 RUN yum-config-manager --add-repo https://developer.download.nvidia.com/compute/cuda/repos/rhel7/x86_64/cuda-rhel7.repo && \
     dnf clean all && \
     dnf install -y \
