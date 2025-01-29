@@ -18,8 +18,9 @@ FROM --platform=linux/amd64 rocm/dev-centos-7:${ROCM_VERSION}-complete AS unifie
 ARG GOLANG_VERSION
 ARG CUDA_VERSION_11
 ARG CUDA_VERSION_12
-COPY ./scripts/rh_linux_deps.sh /
+# COPY ./scripts/rh_linux_deps.sh /
 COPY ./scripts/build_docker.sh /
+COPY ./scripts/env.sh /
 ENV PATH /opt/rh/devtoolset-10/root/usr/bin:/usr/local/cuda/bin:$PATH
 ENV LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/cuda/lib64
 # RUN GOLANG_VERSION=${GOLANG_VERSION} sh /rh_linux_deps.sh
