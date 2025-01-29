@@ -5,7 +5,7 @@ set -eu
 . $(dirname $0)/env.sh
 
 # Set PUSH to a non-empty string to trigger push instead of load
-PUSH=${PUSH:-""}
+PUSH=${PUSH:-"1"}
 
 if [ -z "${PUSH}" ] ; then
     echo "Building ${FINAL_IMAGE_REPO}:$VERSION locally.  set PUSH=1 to push"
